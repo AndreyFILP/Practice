@@ -1,0 +1,34 @@
+1) Реализовать умный указатель для чтения файлов в виде класса FileSmartPtr следующей структуры:
+
+// Вспомогательный класс исключений
+class CannotOpenFileException {
+};
+ 
+class FileSmartPtr {
+private:
+    FILE* f;  // файловый дескриптор, который мы оборачиваем 
+ 
+public:
+    FileSmartPtr(string& name) {
+    // Открываем файл. В случае невозможности его открытия генерируем исключение оператором throw CannotOpenFileException()
+    }
+     ~FileSmartPtr() noexcept {
+     // Закрываем файл
+    }
+    string Read() const {
+     // Читаем файл   
+    }
+};
+
+
+2) Для созданного класса доопределить конструктор копирования и оператор присваивания
+    FileSmartPtr(const FileSmartPtr&)
+    FileSmartPtr& operator= (const FileSmartPtr&)
+Проверить их корректнсть на примере вида:
+int main() {
+    FileSmartPtr f1("a.txt");
+    FileSmartPtr f2 = f1;  // конструктор копирования
+    FileSmartPtr f3("b.txt");
+    f3 = f1;  // оператор присваивания
+}
+
